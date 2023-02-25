@@ -4,6 +4,9 @@ from django.db import models
 class Tag(models.Model):
     name = models.CharField(max_length=63)
 
+    def __str__(self):
+        return self.name
+
 
 class Task(models.Model):
     content = models.TextField()
@@ -12,7 +15,9 @@ class Task(models.Model):
     is_completed = models.BooleanField(default=False)
     tags = models.ManyToManyField(
         Tag,
-        on_delete=models.CASCADE,
         related_name="tasks"
     )
+
+    def __str__(self):
+        return self.content
 

@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.views import generic
 
-from app.models import Task
+from app.models import Task, Tag
 
 
 def index(request):
@@ -10,3 +11,7 @@ def index(request):
         "tasks": tasks
     }
     return render(request, "app/index.html", context)
+
+
+class TagListView(generic.ListView):
+    model = Tag

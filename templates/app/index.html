@@ -2,15 +2,18 @@
 
 {% block content %}
   <body>
+  <h1>TODO list</h1>
+  <a class="btn btn-primary" href="{% url 'app:task-create'%}">Create task</a>
     <ul>{% for task in tasks %}
-      <h1>{{ task.content }}</h1>
+      <h3>{{ task.content }}</h3>
       <li>Created_at: {{ task.created }}</li>
       <li>Deadline: {{ task.deadline }}</li>
       <li>Status: {{ task.is_completed }}</li>
       <li>Tags: {% for tag in task.tags.all %}</li>
           {{ tag }}
           {% endfor %}
-
+      <a class="btn btn-secondary" href="{% url 'app:task-update' pk=task.id%}">Update</a>
+      <a class="btn btn-danger" href="{% url 'app:task-delete' pk=task.id%}">Delete</a>
     {% endfor %}
     </ul>
   </body>

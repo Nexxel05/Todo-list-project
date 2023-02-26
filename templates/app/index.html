@@ -3,7 +3,7 @@
 {% block content %}
   <body>
   <h1>TODO list</h1>
-  <a class="btn btn-primary" href="{% url 'app:task-create'%}">Create task</a>
+  <a class="btn btn-primary float" href="{% url 'app:task-create'%}">Create task</a>
     <ul>{% for task in tasks %}
       <h3>{{ task.content }}</h3>
       <li>Created_at: {{ task.created }}</li>
@@ -11,16 +11,17 @@
       <li>Status:
         {% if task.is_completed %}
         <strong style="color:green">Done</strong>
-          <a class="btn btn-secondary" href="{% url 'app:task-toggle_complete_status' pk=task.id%}">Undo</a>
+          <a class="btn btn-secondary float" href="{% url 'app:task-toggle_complete_status' pk=task.id%}">Undo</a>
         {% else %}
         <strong style="color:red">Not Done</strong>
-          <a class="btn btn-success" href="{% url 'app:task-toggle_complete_status' pk=task.id%}">Complete</a>
+          <a class="btn btn-success float" href="{% url 'app:task-toggle_complete_status' pk=task.id%}">Complete</a>
         {% endif %}
       </li>
-      <li>Tags: {% for tag in task.tags.all %}</li>
+      <li>Tags: {% for tag in task.tags.all %}
           {{ tag }}
-
           {% endfor %}
+      </li>
+      <br>
       <a class="btn btn-secondary" href="{% url 'app:task-update' pk=task.id%}">Update</a>
       <a class="btn btn-danger" href="{% url 'app:task-delete' pk=task.id%}">Delete</a>
       <p>

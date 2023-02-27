@@ -61,4 +61,3 @@ def toggle_complete_status(request, pk):
     task.save()
 
     return HttpResponseRedirect(reverse_lazy("app:index"))
-

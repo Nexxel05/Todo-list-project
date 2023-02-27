@@ -11,10 +11,10 @@
       <li>Status:
         {% if task.is_completed %}
         <strong style="color:green">Done</strong>
-          <a class="btn btn-secondary float" href="{% url 'app:task-toggle_complete_status' pk=task.id%}">Undo</a>
+          <a class="btn btn-secondary float" href="{% url 'app:task-toggle_change_task_status' pk=task.id%}">Undo</a>
         {% else %}
         <strong style="color:red">Not Done</strong>
-          <a class="btn btn-success float" href="{% url 'app:task-toggle_complete_status' pk=task.id%}">Complete</a>
+          <a class="btn btn-success float" href="{% url 'app:task-toggle_change_task_status' pk=task.id%}">Complete</a>
         {% endif %}
       </li>
       <li>Tags: {% for tag in task.tags.all %}

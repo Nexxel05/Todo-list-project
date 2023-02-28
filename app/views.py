@@ -53,11 +53,12 @@ class TagDeleteView(generic.DeleteView):
     success_url = reverse_lazy("app:tag-list")
 
 
-def toggle_change_task_status(request, pk):
-    task = get_object_or_404(Task, id=pk)
+class TaskChangeStatusView(generic.View):
+    def get(self, request, pk):
+        task = get_object_or_404(Task, id=pk)
 
-    task.is_completed = not task.is_completed
+        task.is_completed = not task.is_completed
 
-    task.save()
+        task.save()
 
-    return HttpResponseRedirect(reverse_lazy("app:index"))
+        return HttpResponseRedirect(reverse_lazy("app:index"))

@@ -4,7 +4,7 @@ from django.db import models
 class Tag(models.Model):
     name = models.CharField(max_length=63)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
@@ -18,5 +18,5 @@ class Task(models.Model):
         related_name="tasks"
     )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.content
